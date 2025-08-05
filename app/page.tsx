@@ -640,7 +640,7 @@ export default function WorkshopPlatform() {
           className="text-center mb-12"
         >
           <Card className="bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 text-white shadow-2xl overflow-hidden">
-            <div className="absolute inset-0 bg-black/10" />
+            <div className="absolute inset-0" />
             <CardContent className="py-16 relative z-10">
               <motion.div
                 animate={{
