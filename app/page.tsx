@@ -292,7 +292,7 @@ export default function WorkshopPlatform() {
             {/* Main Conference Title */}
             <div className="relative mb-8">
               <motion.h1
-                className="text-8xl md:text-9xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-amber-600 to-orange-800 drop-shadow-2xl"
+                className="text-8xl mb-2 md:text-9xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-amber-600 to-orange-800 drop-shadow-2xl"
                 animate={{
                   backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
                 }}
