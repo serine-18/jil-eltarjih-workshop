@@ -16,6 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+      <head>
+      <link rel="icon" href="/logo.png" />
+      </head>
       <body className={GeistSans.className}>{children}</body>
     </html>
   )

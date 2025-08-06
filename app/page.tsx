@@ -11,7 +11,21 @@ import Image from "next/image"
 export default function WorkshopPlatform() {
   const [isVisible, setIsVisible] = useState(false)
   const controls = useAnimation()
+   {/*const [phone, setPhone] = useState("")
+  const [confirmed, setConfirmed] = useState(false)
 
+  const handleConfirm = async () => {
+    const res = await fetch("/api/mark-attendance", {
+      method: "POST",
+      body: JSON.stringify({ phoneNumber: phone }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await res.json();
+    setConfirmed(data.success);
+  }*/}
   useEffect(() => {
     setIsVisible(true)
     controls.start({
@@ -627,6 +641,160 @@ export default function WorkshopPlatform() {
                     </div>
                   </motion.div>
                 ))}
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+        {/* Attendance Confirmation Section */}
+
+       {/*  <motion.div
+  initial={{ opacity: 0, y: 100 }}
+  animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 100 }}
+  transition={{ duration: 1.2, delay: 7.5, type: "spring", bounce: 0.2 }}
+  className="mb-16"
+>
+<Card className="bg-white/90 backdrop-blur-xl border-orange-200 shadow-2xl overflow-hidden max-w-xl mx-auto relative">
+  <div className="absolute inset-0 bg-gradient-to-br from-amber-25 via-orange-25 to-stone-25 z-0" />
+
+    <CardHeader className="text-center relative z-10 pb-6">
+      <motion.div
+        animate={{ rotateY: [0, 15, -15, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <BookOpen className="w-12 h-12 text-orange-500 mx-auto mb-4" />
+      </motion.div>
+      <CardTitle className="text-3xl text-orange-800 font-bold">تأكيد الحضور</CardTitle>
+      <CardDescription className="text-orange-600 text-md mt-2">
+        الرجاء إدخال رقم الهاتف المرتبط بالتلغرام لتأكيد حضورك
+      </CardDescription>
+    </CardHeader>
+    <CardContent className="relative z-10 px-6 pb-8">
+      <div className="space-y-4">
+        <input
+          type="text"
+          placeholder="أدخل رقم الهاتف المرتبط بالتلغرام"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          className="w-full p-3 text-right rounded-xl border border-orange-200 focus:outline-none focus:ring-2 focus:ring-orange-400 placeholder:text-gray-400 text-gray-800 shadow-sm bg-white/80 backdrop-blur"
+        />
+        <Button
+          onClick={handleConfirm}
+          className="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-xl text-lg font-bold transition duration-300"
+        >
+          تأكيد الحضور
+        </Button>
+        {confirmed && (
+          <p className="text-green-600 text-center text-lg font-semibold mt-4">
+            ✅ تم تأكيد حضورك بنجاح!
+          </p>
+        )}
+      </div>
+    </CardContent>
+  </Card>
+</motion.div>
+*/}
+
+        {/* Rules Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 100 }}
+          transition={{ duration: 1.2, delay: 7.5, type: "spring", bounce: 0.2 }}
+          className="mb-16"
+        >
+          <Card className="bg-white/90 backdrop-blur-xl border-orange-200 shadow-2xl overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-25 via-amber-25 to-stone-25" />
+            <CardHeader className="text-center relative z-10 pb-8">
+              <motion.div
+                animate={{
+                  rotate: [0, 8, -8, 0],
+                }}
+                transition={{
+                  duration: 10,
+                  repeat: Number.POSITIVE_INFINITY,
+                  ease: "easeInOut",
+                }}
+              >
+                <BookOpen className="w-14 h-14 text-orange-500 mx-auto mb-6" />
+              </motion.div>
+              <CardTitle className="text-4xl text-orange-800 mb-4 font-bold">القانون الداخلي للملتقى</CardTitle>
+              <CardDescription className="text-orange-600 text-xl leading-relaxed max-w-3xl mx-auto">
+                في إطار الحرص على توفير مناخ ملائم للتعلّم، والتفاعل الإيجابي، والانضباط، يُطلب من جميع المشاركين الالتزام التام بالقواعد التالية
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="relative z-10">
+              <div className="space-y-6">
+                {[
+                  "الالتزام بمواقيت الصلوات الخمس جماعة، مع التأكيد على صلاة الصبح في وقتها",
+                  "احترام مواعيد الورشات، الدورات، والجلسات كما هو مبيّن في البطاقة التقنية وجدول أعمال الملتقى",
+                  "عدم مغادرة القاعات أثناء الجلسات دون إذن مسبق من المدرب أو المحاضر",
+                  "الالتزام بمواقيت الاستيقاظ والنوم حسب البرنامج اليومي",
+                  "عدم الخروج من مقر الملتقى بعد الساعة التاسعة مساءً إلا بإذن مسبق من الإدارة",
+                  "وضع الهاتف في الوضع الصامت أثناء الورشات، مع التركيز الكامل على المحتوى المقدَّم",
+                  "عدم الوقوف بجانب باب القاعات أو الخروج غير المبرر لتفادي إزعاج المحيط",
+                  "احترام مواعيد الإطعام (فطور الصباح، الغداء، العشاء) وعدم التأخر عنها",
+                  "المحافظة على النظافة في جميع الأماكن (مكان الإقامة، الورشات، المرافق...)",
+                  "اتباع تعليمات وتوجيهات فريق التنظيم بكل جدية وعدم الخروج عنها",
+                  "احترام الضوابط الشرعية والأخلاقية في التعامل بين الإخوة والأخوات",
+                  "الحرص على الهندام اللائق، ومنع ارتداء السراويل القصيرة من طرف الإخوة",
+                  "التحلي بالاحترام المتبادل وروح التعاون بين جميع المشاركين",
+                  "المشاركة الفعّالة والإيجابية في جميع الأنشطة",
+                  "تمثيل الملتقى بصورة مشرّفة داخل وخارج المقر"
+                ].map((rule, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -60, rotateY: -30 }}
+                    animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : -60, rotateY: isVisible ? 0 : -30 }}
+                    transition={{ duration: 0.8, delay: 8 + index * 0.05, type: "spring", bounce: 0.3 }}
+                    whileHover={{
+                      scale: 1.01,
+                      x: 6,
+                      boxShadow: "0 10px 25px rgba(251, 146, 60, 0.1)",
+                    }}
+                    className="group cursor-pointer"
+                  >
+                    <div className="flex items-start gap-4 p-6 bg-gradient-to-r from-white to-orange-50/50 rounded-xl border-r-3 border-orange-300 hover:border-amber-400 transition-all duration-300 shadow-md hover:shadow-lg">
+                      <motion.div
+                        whileHover={{ rotate: 360, scale: 1.1 }}
+                        transition={{ duration: 0.6 }}
+                        className="w-8 h-8 bg-gradient-to-r from-orange-400 to-amber-400 text-white rounded-full flex items-center justify-center text-sm font-bold mt-1 shadow-md flex-shrink-0"
+                      >
+                        {index + 1}
+                      </motion.div>
+                      <p className="text-gray-700 leading-relaxed group-hover:text-gray-800 transition-colors duration-300">
+                        {rule}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+                
+                {/* Closing Message */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
+                  transition={{ duration: 1, delay: 9 }}
+                  className="mt-12 text-center"
+                >
+                  <div className="bg-gradient-to-r from-orange-100 to-amber-100 rounded-2xl p-8 border-2 border-orange-200 shadow-lg">
+                    <motion.div
+                      animate={{
+                        scale: [1, 1.02, 1],
+                      }}
+                      transition={{
+                        duration: 4,
+                        repeat: Number.POSITIVE_INFINITY,
+                        ease: "easeInOut",
+                      }}
+                    >
+                      <h4 className="text-2xl font-bold text-orange-800 mb-4">ختامًا</h4>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        إن التزامك بهذه الضوابط ليس فقط دليلًا على وعيك وانضباطك، بل مساهمة فعلية في إنجاح هذا الملتقى الجامع.
+                      </p>
+                      <p className="text-xl font-bold text-orange-700 mt-4">
+                        فلنكن على قدر المسؤولية...
+                      </p>
+                    </motion.div>
+                  </div>
+                </motion.div>
               </div>
             </CardContent>
           </Card>
